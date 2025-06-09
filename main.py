@@ -9,22 +9,18 @@ from user import (
 )
 from auth import login
 
-# Definimos roles
 roles = {
     1: Rol(1, "administrador"),
     2: Rol(2, "usuario_estandar")
 }
 
-# Lista de usuarios en memoria y contador
 usuarios = []
 contador_id = 1
 
-# Crear usuario admin por defecto
 usuarios.append(Usuario(contador_id, "Admin", "admin", "Admin1234", roles[1]))
 contador_id += 1
 
 
-#MENU ADMINISTRADOR
 def menu_admin():
     while True:
         print("\n======================================")
@@ -51,7 +47,6 @@ def menu_admin():
             print("Opcion invalida. Intente nuevamente.")
 
 
-#MENU DE USUARIO
 def menu_usuario(usuario):
     while True:
         print("\n======================================")
@@ -76,7 +71,6 @@ def menu_usuario(usuario):
         else:
             print("Opcion invalida. Intente nuevamente.")
 
-#MENU LOGIN
 def main():
     global contador_id
     while True:
