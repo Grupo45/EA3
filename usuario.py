@@ -1,5 +1,5 @@
-from models import Usuario
-from utils import validar_contrasena, confirmar_accion
+from modelos import Usuario
+from utilidades import validar_contrasena, confirmar_accion
 
 
 def registrar_usuario(usuarios, roles, contador_id):

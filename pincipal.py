@@ -1,5 +1,5 @@
-from models import Rol, Usuario
-from user import (
+from modelos import Rol, Usuario
+from usuario import (
     registrar_usuario,
     listar_usuarios,
     eliminar_usuario,
@@ -7,7 +7,7 @@ from user import (
     editar_datos_personales,
     mostrar_resumen_roles
 )
-from auth import login
+from autentificacion import login
 
 roles = {
     1: Rol(1, "administrador"),

@@ -1,4 +1,3 @@
-
 def validar_contrasena(contrasena):
     if len(contrasena) <= 8:
         return False
