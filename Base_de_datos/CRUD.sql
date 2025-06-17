@@ -1,7 +1,7 @@
 -- Selecciona la base de datos donde se ejecutarán las operaciones
 USE ProyectoABP;
 
---INSERCIÓN DE USUARIO
+-- INSERCIÓN DE USUARIO
 -- Crea un nuevo usuario con rol 'usuario_estandar'
 -- Verifica primero que no exista un usuario con el mismo email
 -- La contraseña se almacena en texto plano (problema de seguridad)
@@ -13,7 +13,7 @@ AND NOT EXISTS (
     SELECT 1 FROM Usuario WHERE email = 'juan.perez@mail.com'
 );
 
---CONSULTA DE USUARIOS CON SUS ROLES
+-- CONSULTA DE USUARIOS CON SUS ROLES
 -- Muestra todos los usuarios registrados
 -- Incluye información del rol asociado a cada usuario
 SELECT U.id_usuario, U.nombre, U.email, R.nombre_rol
@@ -31,7 +31,7 @@ SET nombre = 'Juan P. González',
     email = 'juan.gonzalez@mail.com'
 WHERE id_usuario = 1;
 
---CAMBIO DE ROL DE USUARIO
+-- CAMBIO DE ROL DE USUARIO
 -- Actualiza el rol del usuario con ID = 1 a 'admin'
 -- Usa una subconsulta para obtener el ID del rol 'admin'
 UPDATE Usuario
@@ -42,7 +42,7 @@ WHERE id_usuario = 1;
 DELETE FROM Usuario
 WHERE id_usuario = 1;
 
---CONSULTA FINAL DE USUARIOS
+-- CONSULTA FINAL DE USUARIOS
 -- Muestra el estado actual de la tabla de usuarios
 -- Permite verificar los cambios después de las operaciones CRUD
 SELECT U.id_usuario, U.nombre, U.email, R.nombre_rol
