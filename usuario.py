@@ -1,7 +1,9 @@
 from modelos import Usuario
 from utilidades import validar_contrasena, confirmar_accion
 
-
+# Permite registrar un nuevo usuario.
+# Verifica que la contraseña cumpla con requisitos y que el nombre de usuario no exista.
+# Crea un nuevo Usuario con rol estandar (2) y lo agrega a la lista.
 def registrar_usuario(usuarios, roles, contador_id):
     print("\n--- Registro de nuevo usuario ---")
     nombre = input("Nombre completo: ")
@@ -21,6 +23,7 @@ def registrar_usuario(usuarios, roles, contador_id):
     print("Usuario registrado exitosamente.")
     return contador_id + 1
 
+# Imprime todos los usuarios registrados en formato tabla.
 def listar_usuarios(usuarios):
     print("\n---------- LISTADO DE USUARIOS ----------")
     print(f"{'ID':<5}{'Nombre':<20}{'Usuario':<15}{'Rol':<15}")
@@ -28,6 +31,8 @@ def listar_usuarios(usuarios):
     for u in usuarios:
         print(f"{u.id:<5}{u.nombre:<20}{u.usuario:<15}{u.rol.nombre:<15}")
 
+# Elimina un usuario por su ID, previa confirmación.
+# Si no se encuentra el ID, informa al usuario.
 def eliminar_usuario(usuarios):
     try:
         id_u = int(input("Ingrese el ID del usuario a eliminar: "))
@@ -41,6 +46,8 @@ def eliminar_usuario(usuarios):
     except ValueError:
         print("ID invalido.")
 
+# Cambia el rol de un usuario por ID.
+# Muestra los roles disponibles y actualiza el rol si el nuevo ID de rol es válido.
 def cambiar_rol(usuarios, roles):
     try:
         id_u = int(input("Ingrese el ID del usuario: "))
@@ -56,6 +63,8 @@ def cambiar_rol(usuarios, roles):
     except ValueError:
         print("Entrada invalida.")
 
+# Permite al usuario cambiar su nombre y/o contraseña.
+# La contraseña nueva también se valida según las reglas de seguridad.
 def editar_datos_personales(usuario):
     print("\n--- Editar datos personales ---")
     nuevo_nombre = input("Nuevo nombre (dejar en blanco para mantener actual): ")
@@ -72,6 +81,7 @@ def editar_datos_personales(usuario):
 
     print("Datos actualizados.")
 
+# Cuenta cuántos usuarios hay por cada tipo de rol y muestra un resumen.
 def mostrar_resumen_roles(usuarios):
     print("\n--- Resumen de usuarios por rol ---")
     conteo = {}
