@@ -1,13 +1,10 @@
-from modelos import Rol, Usuario
-from usuario import (
-    registrar_usuario,
-    listar_usuarios,
-    eliminar_usuario,
-    cambiar_rol,
-    editar_datos_personales,
-    mostrar_resumen_roles
-)
-from autentificacion import login
+from Modelos.usuario import Usuario
+from Modelos.rol import Rol
+from gestion_usuario import GestionUsuario
+from autentificacion import Autentificacion
+
+gestion = GestionUsuario()
+
 
 roles = {
     1: Rol(1, "administrador"),
@@ -34,13 +31,13 @@ def menu_admin():
         print("--------------------------------------")
         opcion = input("Seleccione una opcion: ")
         if opcion == "1":
-            listar_usuarios(usuarios)
+            gestion.listar_usuarios(usuarios)
         elif opcion == "2":
-            cambiar_rol(usuarios, roles)
+            gestion.cambiar_rol(usuarios, roles)
         elif opcion == "3":
-            eliminar_usuario(usuarios)
+            gestion.eliminar_usuario(usuarios)
         elif opcion == "4":
-            mostrar_resumen_roles(usuarios)
+            gestion.mostrar_resumen_roles(usuarios)
         elif opcion == "5":
             break
         else:
@@ -65,11 +62,12 @@ def menu_usuario(usuario):
             print(f"Rol:       {usuario.rol.nombre}")
             print("------------------------------------------")
         elif opcion == "2":
-            editar_datos_personales(usuario)
+            gestion.editar_datos_personales(usuario)
         elif opcion == "3":
             break
         else:
             print("Opcion invalida. Intente nuevamente.")
+
 
 def main():
     global contador_id
@@ -86,7 +84,7 @@ def main():
         if opcion == "1":
             u = input("Usuario: ")
             c = input("Contrasena: ")
-            usuario_actual = login(u, c, usuarios)
+            usuario_actual = Autentificacion.login(u, c, usuarios)
             if usuario_actual:
                 if usuario_actual.rol.id == 1:
                     menu_admin()
@@ -96,13 +94,14 @@ def main():
                 print("Credenciales incorrectas. Intente nuevamente.")
 
         elif opcion == "2":
-            contador_id = registrar_usuario(usuarios, roles, contador_id)
+            contador_id = gestion.registrar_usuario(usuarios, roles, contador_id)
 
         elif opcion == "3":
             print("Gracias por usar el sistema. Hasta luego.")
             break
         else:
             print("Opcion invalida. Intente nuevamente.")
+
 
 if __name__ == "__main__":
     main()
