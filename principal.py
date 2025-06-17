@@ -18,18 +18,20 @@ usuarios.append(Usuario(contador_id, "Admin", "admin", "Admin1234", roles[1]))
 contador_id += 1
 
 
+# Menú exclusivo para usuarios administradores.
+# Permite listar usuarios, cambiar roles, eliminar usuarios, ver resumen de roles o cerrar sesión.
 def menu_admin():
     while True:
         print("\n======================================")
-        print("           MENU ADMINISTRADOR         ")
+        print("           MENÚ ADMINISTRADOR         ")
         print("======================================")
         print("1. Listar usuarios")
         print("2. Cambiar rol de usuario")
         print("3. Eliminar usuario")
         print("4. Ver resumen de roles")
-        print("5. Cerrar sesion")
+        print("5. Cerrar sesión")
         print("--------------------------------------")
-        opcion = input("Seleccione una opcion: ")
+        opcion = input("Seleccione una opción: ")
         if opcion == "1":
             gestion.listar_usuarios(usuarios)
         elif opcion == "2":
@@ -41,9 +43,13 @@ def menu_admin():
         elif opcion == "5":
             break
         else:
-            print("Opcion invalida. Intente nuevamente.")
+            print("Opcion inválida. Intente nuevamente.")
+
+        input("\nPresione Enter para volver al menú...")
 
 
+# Menú para usuarios estándar.
+# Permite ver sus propios datos, editar nombre o contraseña, o cerrar sesión.
 def menu_usuario(usuario):
     while True:
         print("\n======================================")
@@ -51,9 +57,9 @@ def menu_usuario(usuario):
         print("======================================")
         print("1. Ver mis datos")
         print("2. Editar mis datos")
-        print("3. Cerrar sesion")
+        print("3. Cerrar sesión")
         print("--------------------------------------")
-        opcion = input("Seleccione una opcion: ")
+        opcion = input("Seleccione una opción: ")
         if opcion == "1":
             print("\n---------- TUS DATOS PERSONALES ----------")
             print(f"ID:        {usuario.id}")
@@ -66,24 +72,29 @@ def menu_usuario(usuario):
         elif opcion == "3":
             break
         else:
-            print("Opcion invalida. Intente nuevamente.")
+            print("Opción inválida. Intente nuevamente.")
+
+        input("\nPresione Enter para volver al menú...")
 
 
+# Función principal que se ejecuta al iniciar el programa.
+# Muestra un menú inicial para iniciar sesión, registrarse o salir del sistema.
+# Según el rol del usuario logueado, lo dirige al menú correspondiente.
 def main():
     global contador_id
     while True:
-        print("\n======================================")
-        print("     SISTEMA DE GESTION DE USUARIOS    ")
-        print("======================================")
+        print("\n===========================================")
+        print("     BIBLIOTECA DIGITAL CÓRDOBA USUARIOS    ")
+        print("===========================================")
         print("1. Iniciar sesion")
         print("2. Registrarse")
         print("3. Salir")
         print("--------------------------------------")
-        opcion = input("Seleccione una opcion: ")
+        opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
             u = input("Usuario: ")
-            c = input("Contrasena: ")
+            c = input("Contraseña: ")
             usuario_actual = Autentificacion.login(u, c, usuarios)
             if usuario_actual:
                 if usuario_actual.rol.id == 1:
@@ -100,7 +111,7 @@ def main():
             print("Gracias por usar el sistema. Hasta luego.")
             break
         else:
-            print("Opcion invalida. Intente nuevamente.")
+            print("Opcion inválida. Intente nuevamente.")
 
 
 if __name__ == "__main__":
